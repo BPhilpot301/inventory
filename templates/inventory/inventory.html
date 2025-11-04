@@ -2,4 +2,38 @@
 
 {% block title %} Inventory {% endblock title %}
 
-<h1>Inventory Page</h1>
+{% load static %}
+
+{% block content %}
+
+<div class="container mt-4">
+    <h1>Book Inventory</h1>
+    <a href="{% url 'add_book' %}" class="btn btn-primary">Add a Book</a>
+
+    <table class="table">
+        <thead class="table-dark">
+            <tr>
+                <th scope="col">Title</th>
+                <th scope="col">Author</th>
+                <th scope="col">Year</th>
+                <th scope="col">Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for book in books_list %}
+            <tr>
+                <td>{{book.title}}</td>
+                <td>{{book.author}}</td>
+                <td>{{book.year}}</td>
+                <td>{{book.price}}</td>
+                <td>
+                    <a href="{% url 'edit_book' book.id %}" class="btn btn-primary">Edit Book</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+
+{% endblock content %}

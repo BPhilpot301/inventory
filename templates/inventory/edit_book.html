@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %} Inventory {% endblock title %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="container mt-4">
+    <h1>Edit a Book</h1>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn btn-success" type="submit">Edit Book</button>
+        <a href="{% url 'inventory_page' %}" class="btn btn-secondary">Cancel</a>
+    </form>
+
+</div>
+
+
+
+
+{% endblock content %}
